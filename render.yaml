@@ -5,21 +5,31 @@ services:
     numInstances: 1
     healthCheckPath: /
     envVars:
-      - key: DB_NAME
-        value: n8n
-      - key: DB_USER
-        value: nve7d38xw87rvldjpuri
-      - key: DB_PASSWORD
-        value: pscale_pw_CciNBcxOCVl6xnWNN7r7TcQFWiwsyPGV3BA0krVXe0s
-      - key: DB_HOST
-        value: aws.connect.psdb.cloud
-      - key: DB_PORT
-        value: 3306
-      - key: MYSQL_ATTR_SSL_CA
-        value: /etc/ssl/certs/ca-certificates.crt
+      - key: PGHOST
+        fromDatabase:
+          name: n8nDB
+          property: host
+      - key: PGDATABASE
+        fromDatabase:
+          name: n8nDB
+          property: database
+      - key: PGPORT
+        fromDatabase:
+          name: n8nDB
+          property: port
+      - key: PGUSER
+        fromDatabase:
+          name: n8nDB
+          property: user
+      - key: PGPASSWORD
+        fromDatabase:
+          name: n8nDB
+          property: password
     disk:
       name: n8nDisk
       mountPath: /home/node/.n8n
-      sizeGB: 10
+      sizeGB: 1
+
 databases:
+  - name: n8nDB
     plan: free
