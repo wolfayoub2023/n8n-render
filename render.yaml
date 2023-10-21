@@ -2,6 +2,10 @@ services:
   - type: web
     name: n8n
     env: docker
+    region: oregon # optional (defaults to oregon)
+    plan: standard # optional (defaults to starter)
+    branch: main # optional (defaults to master)
+    # dockerCommand: ./webdis.sh # optional (defaults to Dockerfile command)
     numInstances: 1
     healthCheckPath: /
     envVars:
@@ -28,7 +32,7 @@ services:
     disk:
       name: n8nDisk
       mountPath: /home/node/.n8n
-      sizeGB: 1
+      sizeGB: 10
 
 databases:
   - name: n8nDB
