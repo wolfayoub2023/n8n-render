@@ -1,4 +1,3 @@
-# Start with the n8n base image
 FROM n8nio/n8n:latest
 
 FROM ghcr.io/puppeteer/puppeteer:19.7.2
