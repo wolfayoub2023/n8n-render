@@ -17,5 +17,3 @@ RUN apk add --no-cache \
 
 
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
-
-RUN yarn add -g puppeteer@24.1.0
