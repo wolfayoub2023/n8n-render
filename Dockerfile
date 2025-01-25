@@ -4,5 +4,3 @@ USER root
 
 RUN npm install -g puppeteer-core@24.0.0
 RUN npm install -g @sparticuz/chromium-min@131
-
-USER node
