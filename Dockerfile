@@ -12,7 +12,7 @@ RUN apk add --no-cache \
   libxdamage \
   libxfixes \
   libxrandr \
-  libgbm \
+  mesa-gbm \  # Replaces libgbm
   alsa-lib \
   gtk+3.0 \
   libgcc \
