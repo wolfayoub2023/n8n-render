@@ -22,4 +22,4 @@ RUN apk add --no-cache \
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
 # Puppeteer v13.5.0 works with Chromium 100.
-RUN yarn add puppeteer@24.1.0
+RUN npm install -g puppeteer@24.1.0
