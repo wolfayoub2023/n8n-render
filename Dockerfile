@@ -23,11 +23,16 @@ RUN npm install -g puppeteer@24.1.0
 # Install Python and pip
 RUN apk add --no-cache python3 py3-pip
 
-# Install pipx using pip
-RUN pip3 install pipx
+# Create a virtual environment for Python packages
+RUN python3 -m venv /telethon_env
 
-# Install Telethon using pipx
-RUN pipx install telethon
+# Activate the virtual environment and install pipx and Telethon
+RUN /telethon_env/bin/pip install --upgrade pip \
+    && /telethon_env/bin/pip install pipx \
+    && /telethon_env/bin/pipx install telethon
+
+# Ensure that Python packages installed in the virtual environment are accessible
+ENV PATH="/telethon_env/bin:$PATH"
 
 # Switch back to the n8n user
 USER node
