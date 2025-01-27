@@ -14,25 +14,28 @@ RUN npm install -g puppeteer-core@24.1.0 \
        ca-certificates \
        ttf-freefont \
        nodejs \
-       yarn
+       yarn \
+       python3 \
+       py3-pip  # Installing Python3 and pip
 
 # Set Puppeteer executable path
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
-RUN npm install -g puppeteer@24.1.0
 
-# Install Python and pip
-RUN apk add --no-cache python3 py3-pip
+# Install specific Puppeteer version
+RUN npm install -g puppeteer@24.1.0
 
 # Create a virtual environment for Python packages
 RUN python3 -m venv /telethon_env
 
-# Activate the virtual environment and install pipx and Telethon
+# Install pipx and Telethon inside the virtual environment using pip
 RUN /telethon_env/bin/pip install --upgrade pip \
     && /telethon_env/bin/pip install pipx \
-    && /telethon_env/bin/pipx install telethon
+    && /telethon_env/bin/pip install telethon  # Replacing pipx with direct pip install for Telethon
 
 # Ensure that Python packages installed in the virtual environment are accessible
 ENV PATH="/telethon_env/bin:$PATH"
 
 # Switch back to the n8n user
 USER node
+
+# Your further configuration for n8n, if needed, goes here
