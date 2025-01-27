@@ -20,11 +20,11 @@ RUN npm install -g puppeteer-core@24.1.0 \
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 RUN npm install -g puppeteer@24.1.0
 
-# Install Python and pip
-RUN apk add --no-cache python3 py3-pip
+# Install Python, pip, and pipx
+RUN apk add --no-cache python3 py3-pip py3-pipx
 
-# Install Telethon globally using pip
-RUN pip3 install telethon
+# Install Telethon with pipx
+RUN pipx install telethon
 
 # Switch back to the n8n user
 USER node
