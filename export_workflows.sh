@@ -7,7 +7,7 @@
 set -euo
 
 docker run \
-    -p 5679:5679 \
+    -p 5678:5678 \
     -v /.env \
     -v ${DATA_FOLDER}/n8n:/home/node/.n8n \
     -e N8N_ENCRYPTION_KEY \
