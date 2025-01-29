@@ -22,4 +22,4 @@ ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
 # Install Puppeteer extra and Stealth plugin
 RUN npm install -g puppeteer@24.1.0
-RUN npm install -g puppeteer-extra puppeteer-extra-plugin-stealth
+RUN npm install -g puppeteer-extra puppeteer-extra-plugin-stealth puppeteer-real-browser
